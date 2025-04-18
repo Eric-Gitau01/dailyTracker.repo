@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom - Daily Goal Tracker & Journal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Delius&family=Patrick+Hand&family=Comfortaa:wght@400;700&family=Raleway:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <!-- Gender Selection Modal (shown first) -->
+  <div class="gender-modal" id="genderModal">
+    <div class="gender-content">
+      <h2 class="gender-title">Welcome to Bloom!</h2>
+      <p>Please select your preferred theme style to personalize your experience:</p>
+      
+      <div class="gender-options">
+        <div class="gender-option option-female" data-gender="female">
+          <i class="fas fa-venus"></i>
+          <p>Female</p>
+          <small>Pastel colors, decorative elements</small>
+        </div>
+        
+        <div class="gender-option option-male" data-gender="male">
+          <i class="fas fa-mars"></i>
+          <p>Male</p>
+          <small>Darker tones, minimal design</small>
+        </div>
+      </div>
+      
+      <p>You can change this later in settings.</p>
+    </div>
+  </div>
+
+  <!-- Main App Content (hidden until gender is selected) -->
+  <div class="container" id="appContainer" style="display: none;">
+    <!-- Header -->
+    <header>
+      <h1>Bloom</h1>
+      <div class="date-display" id="currentDate"></div>
+    </header>
+
+    <!-- Motivational Quote -->
+    <div class="quote-container" id="dailyQuote">
+      Loading today's inspiration...
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs">
+      <div class="tab active" data-tab="goals">Goals</div>
+      <div class="tab" data-tab="journal">Journal</div>
+      <div class="tab" data-tab="habits">Habits</div>
+      <div class="tab" data-tab="settings">Settings</div>
+    </div>
+
+    <!-- Goals Tab -->
+    <div class="tab-content active" id="goals">
+      <div class="goal-form">
+        <input type="text" class="goal-input" id="goalInput" placeholder="What do you want to achieve today?">
+        <button class="add-btn" id="addGoalBtn"><i class="fas fa-plus"></i> Add Goal</button>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-title">Today's Progress</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">0% Complete</div>
+      </div>
+
+      <ul class="goal-list" id="goalList">
+        <!-- Goals will be added here dynamically -->
+      </ul>
+
+      <div class="motivational-message" id="motivationalMessage">
+        You're amazing! Keep shining! ✨
+      </div>
+    </div>
+
+    <!-- Journal Tab -->
+    <div class="tab-content" id="journal">
+      <div class="journal-editor">
+        <div class="toolbar">
+          <button class="tool-btn" data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
+          <button class="tool-btn" data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
+          <button class="tool-btn" data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
+          <button class="tool-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+          <button class="tool-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+        </div>
+        <div id="journalContent" contenteditable="true" placeholder="Write your thoughts here..."></div>
+        <button class="save-btn" id="saveJournalBtn"><i class="fas fa-save"></i> Save Entry</button>
+      </div>
+
+      <div class="journal-entries" id="journalEntries">
+        <h3>Previous Entries</h3>
+        <!-- Journal entries will be added here dynamically -->
+      </div>
+    </div>
+
+    <!-- Habits Tab -->
+    <div class="tab-content" id="habits">
+      <div class="habit-tracker">
+        <h3>Daily Habits</h3>
+        <div class="habit-list" id="habitList">
+          <!-- Habits will be added here dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Tab -->
+    <div class="tab-content" id="settings">
+      <div class="settings-panel">
+        <h3>Theme Settings</h3>
+        <p>Current theme: <span id="currentTheme">Female</span></p>
+        <button class="save-btn" id="changeThemeBtn"><i class="fas fa-palette"></i> Change Theme</button>
+
+        <h3>About Bloom</h3>
+        <p>Bloom is your personal daily goal tracker and journal designed to help you stay organized and motivated.</p>
+        <p>Version 1.0.0</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Onboarding Screen -->
+  <div class="onboarding" id="onboarding">
+    <div class="onboarding-content">
+      <h2>Welcome to Bloom! 🌸</h2>
+      <p>Bloom is your personal daily goal tracker and journal designed to help you stay organized and motivated.</p>
+      <p>Track your goals, write journal entries, build habits, and customize your experience with beautiful themes.</p>
+      <p>Let's get started on your journey to productivity and mindfulness!</p>
+      <button class="onboarding-btn" id="startBtn">Let's Bloom! 🌱</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
